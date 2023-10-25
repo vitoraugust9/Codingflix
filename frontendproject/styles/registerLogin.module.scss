@@ -1,0 +1,106 @@
+@import "./colors.module.scss";
+.main {
+  background-image: linear-gradient(to bottom, #151515, black);
+  min-height: 100vh;
+}
+
+.formTitle {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.form {
+  width: 600px;
+  padding: 50px;
+  border: 1px solid $darkGray;
+  margin: 0 auto;
+}
+.form2{
+  @extend .form;
+  margin-top: 9%;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 20px;
+  }
+  .input {
+    border-color: $darkGray;
+    background-color: transparent;
+    color: white;
+  
+    &::placeholder {
+      color: $lightGray;
+    }
+    &:focus {
+      background-color: transparent;
+      border-color: $lightGray;
+      color: white;
+      box-shadow: none;
+    }
+  }
+  .inputName {
+    @extend .input;
+    text-transform: uppercase;
+    &::placeholder {
+      text-transform: none;
+    }
+  }
+  .formBtn {
+    display: block;
+    margin: 50px auto 0 auto;
+    border-color: $lightRed;
+    color: white;
+  
+    &:hover {
+      background-color: transparent;
+      color: $lightGray;
+      border-color: $darkRed;
+    }
+  }
+  
+
+
+  @media(max-width:800px){
+    .form2{
+      margin-top:20px;
+    }
+    .formTitle{
+      margin-bottom: 85px;
+    
+    }
+    .formTitle{
+      font-size: 30px;
+    }
+  }
+  @media (max-width: 767px) {
+    .formTitle {
+      font-size: 30px;
+    }
+    .form {
+      width: 100%;      
+    }
+  }
+
+  @media (max-width: 575px) {
+    .form {
+      padding: 50px 10px;
+    }
+    .form2{
+        margin-top: 15% ;
+      }
+    }
+  
+  
+  @media (max-width: 423px) {
+    .formTitle {
+      font-size: 24px;
+      text-align: center;
+    }
+    .form2{
+      margin-bottom: -200px;
+    }
+  }

@@ -1,11 +1,10 @@
 @import "../../../../styles/colors.module.scss";
 .footer {
-  margin-top: auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  padding:26px;
+  padding: 24px 14px;
 }
 
 .footerLogo {

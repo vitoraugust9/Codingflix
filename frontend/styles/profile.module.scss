@@ -7,9 +7,16 @@
 
 .form {
   border: 1px solid $darkGray;
-  padding: 20px;
+  padding: 20px 0px 20px 0px;
   max-width: 100%;
   border-radius: 8px;
+}
+
+.separator{
+  border-radius: 8px;
+  max-width: 100%;
+  height: 55vh;
+
 }
 .formName {
   display: flex;
@@ -40,8 +47,10 @@
 .memberTime {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
 }
+
 .memberTimeImg {
   width: 20px;
 }
@@ -97,6 +106,8 @@
     font-size: 15px;
     padding: 6px 20px;
     transition: 0.4s;
+    display: block;
+    margin: 10px auto;
     &:hover {
       border-color: $darkRed;
       background-color: transparent;
@@ -184,6 +195,13 @@
       background-color: transparent;
       border-color: $lightRed;
       color: $lightGray;
+
+    }
+    &:active{
+      background-color: transparent;
+    }
+    &:focus{
+      background-color: tra;
     }
   }
 

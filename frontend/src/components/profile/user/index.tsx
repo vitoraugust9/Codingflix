@@ -17,7 +17,7 @@ const UserForm = function () {
   const [initialEmail, setInitialEmail] = useState("");
   const [created_at, setCreated_at] = useState("");
   const date = new Date(created_at);
-  const month = date.toLocaleDateString("default", { month: "long" });
+  const month = date.toLocaleDateString("pt-BR", { month: "long" });
   useEffect(() => {
     profileService.fetchCurrent().then((user) => {
       setFirstName(user.firstName);
@@ -73,7 +73,7 @@ const UserForm = function () {
             alt="iconProfile"
             className={styles.memberTimeImg}
           />
-          <p className={styles.memberText}>
+          <p className={styles.memberTimeText}>
             Membro desde <br />
             {`${date.getDate()} de ${month} de ${date.getFullYear()}`}
           </p>

@@ -1,32 +1,7 @@
-import { Op } from "sequelize"
-import { Course } from "../models"
+import { Op } from 'sequelize'
+import { Course } from '../models'
 
 export const courseService = {
-  getTopTenByLikes: async () => {
-    const results = await Course.sequelize?.query(
-      `SELECT
-        courses.id,
-        courses.name,
-        courses.synopsis,
-        courses.thumbnail_url as thumbnailUrl,
-        COUNT(users.id) AS likes
-      FROM courses
-        LEFT OUTER JOIN likes
-          ON courses.id = likes.course_id
-          INNER JOIN users
-            ON users.id = likes.user_id
-      GROUP BY courses.id
-      ORDER BY likes DESC
-      LIMIT 10;`
-    )
-
-    if (results) {
-      const [topTen, metada] = results
-      return topTen
-    } else {
-      return null
-    }
-  },
   findByIdWithEpisodes: async (id: string) => {
     const courseWithEpisodes = await Course.findByPk(id, {
       attributes: ['id', 'name', 'synopsis', ['thumbnail_url', 'thumbnailUrl']],
@@ -61,15 +36,41 @@ export const courseService = {
     return randomFeaturedCourses.slice(0, 3)
   },
 
-	getTopTenNewest: async () => {
+  getTopTenByLikes: async () => {
+    const results = await Course.sequelize?.query(
+      `SELECT
+        courses.id,
+        courses.name,
+        courses.synopsis,
+        courses.thumbnail_url as thumbnailUrl,
+        COUNT(users.id) AS likes
+      FROM courses
+        LEFT OUTER JOIN likes
+          ON courses.id = likes.course_id
+          INNER JOIN users
+            ON users.id = likes.user_id
+      GROUP BY courses.id
+      ORDER BY likes DESC
+      LIMIT 10;`
+    )
+
+    if (results) {
+      const [topTen, metada] = results
+      return topTen
+    } else {
+      return null
+    }
+  },
+
+  getTopTenNewest: async () => {
     const courses = await Course.findAll({
       limit: 10,
       order: [['created_at', 'DESC']]
     })
 
     return courses
-
   },
+
   findByName: async (name: string, page: number, perPage: number) => {
     const offset = (page - 1) * perPage
 
@@ -92,6 +93,3 @@ export const courseService = {
     }
   }
 }
-
-
-

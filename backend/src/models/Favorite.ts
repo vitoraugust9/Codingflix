@@ -1,38 +1,28 @@
-import { DataTypes, Model } from "sequelize"
-import { sequelize } from "../database"
-import { CourseInstance } from "./Course"
-import { UserInstance } from "./User"
+import { database } from '../database'
+import { DataTypes, Model } from 'sequelize'
+import { CourseInstance } from './Course'
 
-export interface Favorite {
+export interface FavoriteAttributes {
   userId: number
   courseId: number
 }
 
-export interface FavoriteInstance extends Model<Favorite>, Favorite {
-  Course?: CourseInstance
-  User?: UserInstance
+export interface FavoriteInstance extends Model<FavoriteAttributes>, FavoriteAttributes {
+  course?: CourseInstance
 }
 
-export const Favorite = sequelize.define<FavoriteInstance, Favorite>('Favorite', {
+export const Favorite = database.define<FavoriteInstance, FavoriteAttributes>('favorites', {
   userId: {
     allowNull: false,
-    primaryKey: true,
     type: DataTypes.INTEGER,
-    references: {
-      model: 'users',
-      key: 'id'
-    },
+    references: { model: 'users', key: 'id' },
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE'
   },
   courseId: {
     allowNull: false,
-    primaryKey: true,
     type: DataTypes.INTEGER,
-    references: {
-      model: 'courses',
-      key: 'id'
-    },
+    references: { model: 'courses', key: 'id' },
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE'
   }

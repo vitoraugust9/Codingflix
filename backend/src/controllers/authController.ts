@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
-import { userService } from '../services/userService'
 import { jwtService } from '../services/jwtService'
+import { userService } from '../services/userService'
 
-const authController = {
-
+export const authController = {
+  // POST /auth/register
   register: async (req: Request, res: Response) => {
     const { firstName, lastName, phone, birth, email, password } = req.body
 
@@ -30,7 +30,10 @@ const authController = {
         return res.status(400).json({ message: err.message })
       }
     }
-  },login: async (req: Request, res: Response) => {
+  },
+
+  // POST /auth/login
+  login: async (req: Request, res: Response) => {
     const { email, password } = req.body
 
     try {
@@ -49,7 +52,7 @@ const authController = {
           return res.status(401).json({ message: 'Senha incorreta' })
         }
 
-				const payload = {
+        const payload = {
           id: user.id,
           firstName: user.firstName,
           email: user.email
@@ -66,4 +69,3 @@ const authController = {
     }
   }
 }
-export { authController }

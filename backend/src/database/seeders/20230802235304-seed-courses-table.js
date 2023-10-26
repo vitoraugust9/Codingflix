@@ -1,10 +1,6 @@
-// src/database/seeders/XXXXXXXXXXXXXX-seed-courses-table.js
-
-'use strict';
-
 module.exports = {
   async up (queryInterface, Sequelize) {
-    const [categories] = await queryInterface.sequelize.query('SELECT id FROM categories;')
+    const [courses] = await queryInterface.sequelize.query('SELECT id FROM categories;')
 
     await queryInterface.bulkInsert('courses', [
       { name: 'Programador Full-stack Javascript', synopsis: 'Torne-se um mestre em desenvolvimento web Full-stack com JavaScript neste curso abrangente.', featured: true, category_id: categories[1].id, created_at: new Date(), updated_at: new Date() },
@@ -23,6 +19,7 @@ module.exports = {
       { name: 'O Guia do Programador Freelancer', synopsis: 'Navegue pelo mundo do trabalho freelancer com confiança: Este guia abrangente oferece insights e estratégias para estabelecer uma carreira bem-sucedida como programador independente.', category_id: categories[4].id, created_at: new Date(), updated_at: new Date() },
     ])
   },
+
 
   async down (queryInterface, Sequelize) {
     await queryInterface.bulkDelete('courses', null, {})

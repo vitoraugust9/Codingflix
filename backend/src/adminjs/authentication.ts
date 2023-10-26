@@ -1,5 +1,3 @@
-// src/adminjs/authentication.ts
-
 import { AuthenticationOptions } from '@adminjs/express'
 import { User } from '../models'
 import bcrypt from 'bcrypt'

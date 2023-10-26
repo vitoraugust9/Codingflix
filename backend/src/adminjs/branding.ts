@@ -1,10 +1,8 @@
-// src/adminjs/branding.ts
-
 import { BrandingOptions } from 'adminjs'
 
 export const brandingOptions: BrandingOptions = {
-  companyName: 'CodingFlix',
-  logo: '/codingflix.svg',
+  companyName: 'OneBitFlix',
+  logo: '/onebitflix.svg',
   theme: {
     colors: {
       primary100: '#ff0043',

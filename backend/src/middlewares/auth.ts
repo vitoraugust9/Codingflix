@@ -1,16 +1,14 @@
-// src/middlewares/auth.ts
-
 import { NextFunction, Request, Response } from 'express'
 import { JwtPayload } from 'jsonwebtoken'
 import { UserInstance } from '../models/User'
 import { jwtService } from '../services/jwtService'
-import { userService } from '../services/userService' 
+import { userService } from '../services/userService'
 
-export interface AuthenticatedRequest extends Request {
+export interface RequestWithUser extends Request {
   user?: UserInstance | null
 }
 
-export function ensureAuth(req: AuthenticatedRequest, res: Response, next: NextFunction) {
+export function ensureAuth(req: RequestWithUser, res: Response, next: NextFunction) {
   const authorizationHeader = req.headers.authorization
 
   if (!authorizationHeader) {
@@ -31,7 +29,7 @@ export function ensureAuth(req: AuthenticatedRequest, res: Response, next: NextF
   })
 }
 
-export function ensureAuthViaQuery(req: AuthenticatedRequest, res: Response, next: NextFunction) {
+export function ensureAuthViaQuery(req: RequestWithUser, res: Response, next: NextFunction) {
   const { token } = req.query
 
   if (!token) {

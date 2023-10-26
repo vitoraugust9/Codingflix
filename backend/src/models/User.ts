@@ -1,10 +1,9 @@
-import { sequelize } from '../database'
+import { database } from '../database'
 import { DataTypes, Model, Optional } from 'sequelize'
 import bcrypt from 'bcrypt'
 import { EpisodeInstance } from './Episode'
 
 type CheckPasswordCallback = (err: Error | undefined, isSame: boolean) => void
-
 
 export interface UserAttributes {
   id: number
@@ -20,12 +19,11 @@ export interface UserAttributes {
 export interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
 
 export interface UserInstance extends Model<UserAttributes, UserCreationAttributes>, UserAttributes {
-  [x: string]: EpisodeInstance[]
   episodes?: EpisodeInstance[]
   checkPassword: (password: string, callbackfn: CheckPasswordCallback) => void
 }
 
-const User = sequelize.define<UserInstance, UserAttributes>('users', {
+export const User = database.define<UserInstance, UserAttributes>('users', {
   id: {
     allowNull: false,
     autoIncrement: true,
@@ -58,16 +56,12 @@ const User = sequelize.define<UserInstance, UserAttributes>('users', {
   },
   password: {
     allowNull: false,
-    type: DataTypes.STRING
+    type: DataTypes.INTEGER
   },
   role: {
     allowNull: false,
-    type: DataTypes.STRING,
-    validate: {
-        isIn: [['admin', 'user']]
-      }
-    }
-    
+    type: DataTypes.STRING
+  }
 }, {
   hooks: {
     beforeSave: async (user) => {
@@ -87,5 +81,3 @@ User.prototype.checkPassword = function (password: string, callbackfn: (err: Err
     }
   })
 }
-
-export { User }

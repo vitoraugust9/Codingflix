@@ -1,8 +1,8 @@
 import express from 'express'
-import { adminJs, adminJsRouter } from './adminjs'
+import cors from 'cors';
 import { database } from './database'
 import { router } from './routes'
-import cors from 'cors'
+import { adminJs, adminJsRouter } from './adminjs'
 
 const app = express()
 

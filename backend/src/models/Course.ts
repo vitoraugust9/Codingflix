@@ -1,7 +1,7 @@
-import { sequelize } from '../database'
+import { database } from '../database'
 import { DataTypes, Model, Optional } from 'sequelize'
 
-export interface Course {
+export interface CourseAttributes {
   id: number
   name: string
   synopsis: string
@@ -10,11 +10,11 @@ export interface Course {
   categoryId: number
 }
 
-export interface CourseCreationAttributes extends Optional<Course, 'id' | 'thumbnailUrl' | 'featured' > {}
+export interface CourseCreationAttributes extends Optional<CourseAttributes, 'id' | 'thumbnailUrl' | 'featured' > {}
 
-export interface CourseInstance extends Model<Course, CourseCreationAttributes>, Course {}
+export interface CourseInstance extends Model<CourseAttributes, CourseCreationAttributes>, CourseAttributes {}
 
-export const Course = sequelize.define<CourseInstance, Course>('Course', {
+export const Course = database.define<CourseInstance, CourseAttributes>('courses', {
   id: {
     allowNull: false,
     autoIncrement: true,

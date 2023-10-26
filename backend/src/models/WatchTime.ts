@@ -1,6 +1,5 @@
-import { DataTypes, Model } from "sequelize"
-import { sequelize } from "../database"
-
+import { database } from '../database'
+import { DataTypes, Model } from 'sequelize'
 
 export interface WatchTimeAttributes {
   seconds: number
@@ -10,14 +9,13 @@ export interface WatchTimeAttributes {
 
 export interface WatchTimeInstance extends Model<WatchTimeAttributes>, WatchTimeAttributes { }
 
-export const WatchTime = sequelize.define<WatchTimeInstance, WatchTimeAttributes>('WatchTime', {
+export const WatchTime = database.define<WatchTimeInstance, WatchTimeAttributes>('watch_times', {
   seconds: {
     allowNull: false,
     type: DataTypes.INTEGER
   },
   userId: {
     allowNull: false,
-    primaryKey: true,
     type: DataTypes.INTEGER,
     references: { model: 'users', key: 'id' },
     onUpdate: 'CASCADE',
@@ -25,7 +23,6 @@ export const WatchTime = sequelize.define<WatchTimeInstance, WatchTimeAttributes
   },
   episodeId: {
     allowNull: false,
-    primaryKey: true,
     type: DataTypes.INTEGER,
     references: { model: 'episodes', key: 'id' },
     onUpdate: 'CASCADE',

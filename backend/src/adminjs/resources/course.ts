@@ -1,16 +1,17 @@
-import uploadFileFeature from "@adminjs/upload";
-import { FeatureType, ResourceOptions } from "adminjs";
-import path from "path";
+import { FeatureType, ResourceOptions } from 'adminjs'
+import uploadFileFeature from '@adminjs/upload'
+import path from 'path'
 
 export const courseResourceOptions: ResourceOptions = {
-  navigation: 'Catálogo',
+  navigation: {
+    name: 'Catálogo',
+    icon: 'Categories'
+  },
   editProperties: ['name', 'synopsis', 'uploadThumbnail', 'featured', 'categoryId'],
   filterProperties: ['name', 'synopsis', 'featured', 'categoryId', 'createdAt', 'updatedAt'],
   listProperties: ['id', 'name', 'featured', 'categoryId'],
   showProperties: ['id', 'name', 'synopsis', 'featured', 'thumbnailUrl', 'categoryId', 'createdAt', 'updatedAt']
 }
-
-
 
 export const courseResourceFeatures: FeatureType[] = [
   uploadFileFeature({

@@ -5,6 +5,7 @@ import courseService, { CourseType } from "../../../services/courseService";
 import HeaderAuth from "../../common/headerAuth";
 import { Button, Container } from "reactstrap";
 import Link from "next/link";
+import PageSpinner from "../../common/spinner";
 
 
 const FeaturedSection = function () {
@@ -12,7 +13,7 @@ const FeaturedSection = function () {
   const [currentCourseIndex, setCurrentCourseIndex] = useState(0);
 
   if (error) return error;
-  if (!data) return (<><p>Loading...</p></>);
+  if (!data) return <PageSpinner />; 
 
 
   const currentCourse = data.data[currentCourseIndex];

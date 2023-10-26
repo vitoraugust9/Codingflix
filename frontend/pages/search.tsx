@@ -10,13 +10,13 @@ import Footer from "@/src/components/common/footer";
 
 const Search = function () {
     const router = useRouter();
-    const searchName:any = router.query.name;
+    const searchName: any = router.query.name;
     const [searchResult, setSearchResult] = useState<CourseType[]>([]);
 
     const searchCourses = async function () {
-        
+
         const res = await courseService.getSearch(searchName);
-        setSearchResult(res.data.courses);    
+        setSearchResult(res.data.courses);
     };
 
     useEffect(() => {
@@ -38,17 +38,17 @@ const Search = function () {
 
                         <Container className="d-flex flex-wrap justify-content-center gap-5 py-4">
                             {searchResult?.map((course) => (
-                            <SearchCard key={course.id} course={course} />
+                                <SearchCard key={course.id} course={course} />
                             ))}
                         </Container>
                     ) : (
                         <div className={styles.searchResult}>
                             <p className={styles.noSearchText}>Nenhum resultado encontrado!</p>
                         </div>
-                        )}
+                    )}
                 </section>
                 <div className={styles.footer}>
-                <Footer />
+                    <Footer />
                 </div>
             </main>
         </>

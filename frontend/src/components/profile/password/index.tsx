@@ -64,7 +64,7 @@ const PasswordForm= function () {
 
   return (
   <>
-  <div className={styles.separator}>
+  <div>
 	<Form className={styles.form} onSubmit={handlePasswordUpadate}>
 	  <div className={styles.inputNormalDiv}>
 	    <FormGroup>

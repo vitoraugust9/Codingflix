@@ -70,7 +70,7 @@ removeLike: async (courseId: number | string) => {
 	const token = sessionStorage.getItem("onebitflix-token");
 
   const res = await api
-  .delete(`/likes/${courseId}`, {
+  .delete(`/likes`, {
 	  headers: {
 	    Authorization: `Bearer ${token}`,
     },

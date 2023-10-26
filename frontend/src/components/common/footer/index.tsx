@@ -5,7 +5,7 @@ const Footer = function () {
   return (<>
     <Container className={styles.footer}>
       <a href="https://www.linkedin.com/in/vitoraugustosilva" target="_blank">
-        <img src="linkfooter.svg" alt="Meu Linkedin" className={styles.footerLink} />
+        <img src="/linkfooter.svg" alt="Meu Linkedin" className={styles.footerLink} />
       </a>
 
 

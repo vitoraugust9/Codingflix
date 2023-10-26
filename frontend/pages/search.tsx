@@ -35,19 +35,22 @@ const Search = function () {
                 </div>
                 <section className={styles.mainContent}>
                     {searchResult.length >= 1 ? (
-                    <Container className="d-flex flex-wrap justify-content-center gap-5 py-4">
-                        {searchResult?.map((course) => (
-                        <SearchCard key={course.id} course={course} />
-                        ))}
-                    </Container>
-            ) : (
-            <p className={styles.noSearchText}>Nenhum resultado encontrado!</p>
-          )}
-        </section>
-        <div className={styles.footer}>
-          <Footer />
-        </div>
-      </main>
+
+                        <Container className="d-flex flex-wrap justify-content-center gap-5 py-4">
+                            {searchResult?.map((course) => (
+                            <SearchCard key={course.id} course={course} />
+                            ))}
+                        </Container>
+                    ) : (
+                        <div className={styles.searchResult}>
+                            <p className={styles.noSearchText}>Nenhum resultado encontrado!</p>
+                        </div>
+                        )}
+                </section>
+                <div className={styles.footer}>
+                <Footer />
+                </div>
+            </main>
         </>
     );
 };

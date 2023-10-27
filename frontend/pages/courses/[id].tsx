@@ -8,6 +8,7 @@ import { Button, Container } from "reactstrap";
 import PageSpinner from "@/src/components/common/spinner";
 import EpisodeList from "@/src/components/episodeList";
 import Footer from "@/src/components/common/footer";
+import Link from "next/link";
 
 const CoursePage = function () {
     const [course, setCourse] = useState<CourseType>();
@@ -82,7 +83,7 @@ const CoursePage = function () {
                 <div
                     style={{
                         backgroundImage: `linear-gradient(to bottom, #6666661a, #151515),
-	        url(${process.env.NEXT_PUBLIC_BASEURL}/${course?.thumbnailUrl})`,
+	                    url(${process.env.NEXT_PUBLIC_BASEURL}/${course?.thumbnailUrl})`,
                         backgroundSize: "100% 140%",
                         backgroundPosition: "center",
                         minHeight: "550px",

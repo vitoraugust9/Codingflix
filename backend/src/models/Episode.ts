@@ -1,4 +1,4 @@
-import { database } from '../database'
+import { sequelize } from '../database'
 import { DataTypes, Model, Optional } from 'sequelize'
 import { WatchTimeInstance } from './WatchTime'
 import { CourseInstance } from './Course'
@@ -20,7 +20,7 @@ export interface EpisodeInstance extends Model<EpisodeAttributes, EpisodeCreatio
   watchTime?: WatchTimeInstance
 }
 
-export const Episode = database.define<EpisodeInstance, EpisodeAttributes>('episodes', {
+export const Episode = sequelize.define<EpisodeInstance, EpisodeAttributes>('episodes', {
   id: {
     allowNull: false,
     autoIncrement: true,

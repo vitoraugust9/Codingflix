@@ -1,4 +1,4 @@
-import { database } from '../database'
+import { sequelize } from '../database'
 import { DataTypes, Model } from 'sequelize'
 
 export interface LikeAttributes {
@@ -8,7 +8,7 @@ export interface LikeAttributes {
 
 export interface LikeInstance extends Model<LikeAttributes>, LikeAttributes { }
 
-export const Like = database.define<LikeInstance, LikeAttributes>('likes', {
+export const Like = sequelize.define<LikeInstance, LikeAttributes>('likes', {
   userId: {
     allowNull: false,
     type: DataTypes.INTEGER,

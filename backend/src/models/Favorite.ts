@@ -1,4 +1,4 @@
-import { database } from '../database'
+import { sequelize } from '../database'
 import { DataTypes, Model } from 'sequelize'
 import { CourseInstance } from './Course'
 
@@ -11,7 +11,7 @@ export interface FavoriteInstance extends Model<FavoriteAttributes>, FavoriteAtt
   course?: CourseInstance
 }
 
-export const Favorite = database.define<FavoriteInstance, FavoriteAttributes>('favorites', {
+export const Favorite = sequelize.define<FavoriteInstance, FavoriteAttributes>('favorites', {
   userId: {
     allowNull: false,
     type: DataTypes.INTEGER,

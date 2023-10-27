@@ -1,4 +1,4 @@
-import { database } from '../database'
+import { sequelize } from '../database'
 import { DataTypes, Model, Optional } from 'sequelize'
 
 export interface CourseAttributes {
@@ -14,7 +14,7 @@ export interface CourseCreationAttributes extends Optional<CourseAttributes, 'id
 
 export interface CourseInstance extends Model<CourseAttributes, CourseCreationAttributes>, CourseAttributes {}
 
-export const Course = database.define<CourseInstance, CourseAttributes>('courses', {
+export const Course = sequelize.define<CourseInstance, CourseAttributes>('courses', {
   id: {
     allowNull: false,
     autoIncrement: true,
